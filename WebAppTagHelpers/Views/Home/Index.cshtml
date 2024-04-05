@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    List<Speaker> speakers = new List<Speaker>
+    {
+        new Speaker { SpeakerId = 1, FirstName = "John", LastName = "Doe", TrackName = "Software Development", Company = "TechCorp", ImageUrl="https://media.istockphoto.com/id/117949589/photo/young-guy-wearing-headset.jpg?s=612x612&w=0&k=20&c=I93f0I_rEDLaendmChOg6L1di8s3WSgEtIXLmjXAZIU=" },
+        new Speaker { SpeakerId = 2, FirstName = "Jane", LastName = "Smith", TrackName = "Data Science", Company = "DataInc", ImageUrl="https://media.istockphoto.com/id/1170710621/photo/serious-businessman-in-spectacles-having-mobile-phone-conversation-about-job-bearded-male.jpg?s=612x612&w=0&k=20&c=uZgCAclTDdIZuiBVSUvw5KnlkKVdjUKEJta6e3YrfKg=" },
+        new Speaker { SpeakerId = 3, FirstName = "Alice", LastName = "Johnson", TrackName = "Cloud Computing", Company = "CloudTech", ImageUrl="https://media.istockphoto.com/id/1770760932/photo/help-on-the-line.jpg?s=612x612&w=0&k=20&c=nCmI9SNDLScLXgxCAa2x2tN22czctpjw3bsA7dS5pJo=" },
+        new Speaker { SpeakerId = 4, FirstName = "Bob", LastName = "Brown", TrackName = "Cybersecurity", Company = "SecureCo", ImageUrl="https://media.istockphoto.com/id/1082528038/photo/businessman-talking-on-the-phone.jpg?s=612x612&w=0&k=20&c=Ok6PrU0LbOhTywksOLYHkjBtHHZPEYD5ks19a6LZsik=" },
+        new Speaker { SpeakerId = 5, FirstName = "Charlie", LastName = "Davis", TrackName = "Machine Learning", Company = "MLCorp", ImageUrl="https://media.istockphoto.com/id/507756220/photo/call-center-agent-at-work.jpg?s=612x612&w=0&k=20&c=108NjqtITzOaBDvW1kQaD7Kip9TnfLaaXcO4PgKDzUc=" },
+        // new Speaker { SpeakerId = 6, FirstName = "Diana", LastName = "Miller", TrackName = "Blockchain", Company = "BlockChainCo" },
+        // new Speaker { SpeakerId = 7, FirstName = "Eve", LastName = "Wilson", TrackName = "Quantum Computing", Company = "QuantumTech" },
+        // new Speaker { SpeakerId = 8, FirstName = "Frank", LastName = "Moore", TrackName = "Virtual Reality", Company = "VRInnovations" },
+        new Speaker { SpeakerId = 9, FirstName = "Grace", LastName = "Taylor", TrackName = "Internet of Things", Company = "IoTInnovations", ImageUrl="https://th.bing.com/th/id/OIP.nd4SwD3gyaCEl1PmoorJtAHaEK?w=310&h=180&c=7&r=0&o=5&pid=1.7" },
+        // new Speaker { SpeakerId = 10, FirstName = "Henry", LastName = "Anderson", TrackName = "Artificial Intelligence", Company = "AIInnovations" }
+    };
+
+
+}
+
+@foreach(var speaker in speakers)
+{
+    @* <div class="card-container">
+        <speaker-track track-name="@speaker.TrackName">
+            <speaker-card speaker="speaker"></speaker-card>
+        </speaker-track>
+    </div> *@
+
+   <div class="container">
+      <speaker-track track-name="@speaker.TrackName">
+          @await Component.InvokeAsync("SpeakerCard", speaker)
+      </speaker-track>
+   </div>
+
+}

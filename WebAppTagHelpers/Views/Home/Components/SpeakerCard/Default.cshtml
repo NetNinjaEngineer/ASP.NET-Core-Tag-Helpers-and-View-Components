@@ -1,0 +1,10 @@
+﻿@model Speaker
+
+<div class='card mb-3' style='max-width: 18rem;'>
+        <img src='@Model.ImageUrl' class='card-img-top' alt='Speaker 1'>
+    <div class='card-body'>
+        <h5 class='card-title'>@string.Concat(@Model.FirstName, ' ', @Model.LastName)</h5>
+        <p class='card-text'>@Model.TrackName, @Model.Company</p>
+        <a href='#' class='btn btn-primary'>View Profile</a>
+    </div>
+</div>
