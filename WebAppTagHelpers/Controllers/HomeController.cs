@@ -18,6 +18,17 @@ namespace WebAppTagHelpers.Controllers
             return View();
         }
 
+        public IActionResult ModelTest()
+        {
+            var modelTest = new ModelTest()
+            {
+                FirstName = "Mohamed",
+                LastName = "Ehab"
+            };
+
+            return View(modelTest);
+        }
+
         public IActionResult Privacy()
         {
             return View();
