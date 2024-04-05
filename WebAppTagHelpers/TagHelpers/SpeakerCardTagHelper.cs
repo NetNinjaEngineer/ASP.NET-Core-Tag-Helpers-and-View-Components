@@ -1,31 +1,40 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using WebAppTagHelpers.Models;
 
-namespace WebAppTagHelpers.TagHelpers
+namespace WebAppTagHelper.TagHelpers
 {
-    [HtmlTargetElement(ParentTag = "speaker-track")]
+    [HtmlTargetElement("SpeakerCard",
+        ParentTag = "SpeakerTrack")]
     public class SpeakerCardTagHelper : TagHelper
     {
-        public Speaker Speaker { get; set; } = null!;
-
+        public Speaker Speaker { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            base.Process(context, output);
-            string content = $@"
-                <div class='card mb-3' style='max-width: 18rem;'>
-                        <img src='{Speaker.ImageUrl}' class='card-img-top' alt='Speaker 1'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>{string.Concat(Speaker.FirstName, ' ', Speaker.LastName)}</h5>
-                        <p class='card-text'>{Speaker.TrackName}, {Speaker.Company}</p>
-                        <a href='#' class='btn btn-primary'>View Profile</a>
-                    </div>
-                </div>
-            ";
-
-
+            string content = $@"<div class='card'>
+		                    <div class='card-img'>
+                                <img src='static/speakers/Speaker-{Speaker.SpeakerId}.jpg' />
+                            </div>
+		                    <h4 class='card-title'><a href='#'>{Speaker.FirstName} {Speaker.LastName}</a></h4>
+		                    <p class='card-position'>{Speaker.Company}</p>
+		                    <p class='card-description'>Keynote: Will be announced soon</p>
+		                    <ul class='social accent-color'>
+			                    <li>
+				                    <a target='_blank' href='#'>LinkedIn</a>
+			                    </li>
+			                    <li>
+				                    <a target='_blank' href='#'>Microsoft</a>
+			                    </li>
+		                    </ul>
+	                    </div>";
+            output.Attributes.SetAttribute("class", "col-xs-12 col-sm-6 col-md-4 col-lg-3");
             output.TagName = "div";
             output.Content.SetHtmlContent(content);
-
         }
     }
 }
+
+
+
+
+
+//[HtmlTargetElement("SpeakerCard", TagStructure = TagStructure.NormalOrSelfClosing)]
